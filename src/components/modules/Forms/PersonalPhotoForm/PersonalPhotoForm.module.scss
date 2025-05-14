@@ -1,0 +1,62 @@
+@import '@/styles/vars';
+
+.wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 264px;
+  aspect-ratio: 1;
+  margin: auto;
+  border-radius: 50%;
+  overflow: hidden;
+
+  &:hover {
+    .labelWrapper {
+      opacity: 1;
+    }
+  }
+}
+
+.labelWrapper {
+  position: absolute;
+  inset: 0;
+  background-color: $color-black-7;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 2;
+}
+
+.icon {
+  width: 41.5px;
+  height: 41.5px;
+  color: $color-white;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.loadingOverlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: grid;
+  place-items: center;
+  z-index: 3;
+}

@@ -1,0 +1,16 @@
+html,
+body {
+	height: 100%;
+	font-weight: 400;
+	margin: 0;
+	color: $color-primary;
+
+	@include media-breakpoint-down(md) {
+		height: 100vh;
+	}
+}
+
+body {
+	position: relative;
+	min-width: 32rem;
+}

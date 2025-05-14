@@ -1,0 +1,14 @@
+@import 'src/styles/vars';
+
+.wrapper {
+  padding: 2.5rem;
+}
+
+.image {
+  width: 100%;
+  max-width: 264px;
+  height: auto;
+  aspect-ratio: 1/1;
+  margin: auto;
+  border-radius: 50%;
+}

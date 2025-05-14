@@ -1,0 +1,43 @@
+{
+  "pages": {
+    "home": {
+      "meta": {
+        "title": "CV | Vadim Sirisko",
+        "description": "page description",
+        "keywords": "page keywords",
+        "og": {
+          "title": "og title",
+          "description": "og description"
+        }
+      }
+    }
+  },
+  "common": {},
+  "auth": {
+    "title": "Authorization"
+  },
+  "aboutMe": {
+    "title": "About Me"
+  },
+  "contacts": {
+    "title": "Contacts"
+  },
+  "skills": {
+    "title": "Skills"
+  },
+  "education": {
+    "title": "Education"
+  },
+  "languages": {
+    "title": "Languages"
+  },
+  "experience": {
+    "title": "Experience"
+  },
+  "login": {
+    "title": "Login",
+    "username": "Username",
+    "password": "Password",
+    "sendPassword": "Send password"
+  }
+}

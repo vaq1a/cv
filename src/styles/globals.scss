@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import './reset';
+@import './vars';
+@import './mixins';
+@import './base';
+@import './editor';
+
+@layer base {
+  :root {
+    --radius: 0.5rem
+  }
+}
+
+.touch-action-none {
+  touch-action: none;
+}

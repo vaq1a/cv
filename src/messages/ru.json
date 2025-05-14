@@ -1,0 +1,43 @@
+{
+  "pages": {
+    "home": {
+      "meta": {
+        "title": "Резюме | Вадим Сирисько",
+        "description": "описание страницы",
+        "keywords": "ключевые слова страницы",
+        "og": {
+          "title": "ог заголовок",
+          "description": "ог описание"
+        }
+      }
+    }
+  },
+  "common": {},
+  "auth": {
+    "title": "Авторизация"
+  },
+  "aboutMe": {
+    "title": "Обо мне"
+  },
+  "contacts": {
+    "title": "Контакты"
+  },
+  "skills": {
+    "title": "Навыки"
+  },
+  "education": {
+    "title": "Образование"
+  },
+  "languages": {
+    "title": "Языки"
+  },
+  "experience": {
+    "title": "Опыт"
+  },
+  "login": {
+    "title": "Войти",
+    "username": "Имя пользователя",
+    "password": "Пароль",
+    "sendPassword": "Отправить пароль"
+  }
+}

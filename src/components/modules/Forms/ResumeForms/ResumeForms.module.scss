@@ -1,0 +1,22 @@
+@import "src/styles/_mixins";
+@import "src/styles/_vars";
+
+.container {
+  display: grid;
+  column-gap: 4.5rem;
+  row-gap: 3rem;
+  grid-template-columns: minmax(min-content, 25.5rem) minmax(min-content, 39rem);
+  justify-content: space-between;
+  padding-top: 3.7rem;
+  padding-bottom: 3.7rem;
+
+  @include media-breakpoint-down(md) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}

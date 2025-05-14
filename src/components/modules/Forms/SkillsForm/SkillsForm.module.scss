@@ -1,0 +1,17 @@
+@import '@/styles/vars';
+
+.editor {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+
+  &__field {
+    border: 1px solid $color-black-20;
+    border-radius: 0.9375rem;
+    padding: 1.25rem;
+  }
+
+  &__toolbar {
+    align-self: flex-end;
+  }
+}
