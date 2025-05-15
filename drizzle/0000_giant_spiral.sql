@@ -1,12 +1,13 @@
 CREATE TABLE IF NOT EXISTS "resume" (
 	"id" serial PRIMARY KEY NOT NULL,
-	"personalInfo" text,
-	"contacts" text,
-	"aboutMe" json NOT NULL,
-	"skills" text,
-	"educations" text,
-	"languages" text,
-	"experience" text
+	"personalPhoto" text,
+	"personalInfo" jsonb,
+	"contacts" jsonb,
+	"aboutMe" jsonb,
+	"skills" jsonb,
+	"educations" jsonb,
+	"languages" jsonb,
+	"experience" jsonb
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "secret" (

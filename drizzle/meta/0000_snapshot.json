@@ -1,5 +1,5 @@
 {
-  "id": "138eb3bb-e90e-4ab2-8d9a-79d681bc7d3c",
+  "id": "9db82cee-1099-47d7-8e2d-333be7470281",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -14,45 +14,51 @@
           "primaryKey": true,
           "notNull": true
         },
+        "personalPhoto": {
+          "name": "personalPhoto",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
         "personalInfo": {
           "name": "personalInfo",
-          "type": "text",
+          "type": "jsonb",
           "primaryKey": false,
           "notNull": false
         },
         "contacts": {
           "name": "contacts",
-          "type": "text",
+          "type": "jsonb",
           "primaryKey": false,
           "notNull": false
         },
         "aboutMe": {
           "name": "aboutMe",
-          "type": "json",
+          "type": "jsonb",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
         },
         "skills": {
           "name": "skills",
-          "type": "text",
+          "type": "jsonb",
           "primaryKey": false,
           "notNull": false
         },
         "educations": {
           "name": "educations",
-          "type": "text",
+          "type": "jsonb",
           "primaryKey": false,
           "notNull": false
         },
         "languages": {
           "name": "languages",
-          "type": "text",
+          "type": "jsonb",
           "primaryKey": false,
           "notNull": false
         },
         "experience": {
           "name": "experience",
-          "type": "text",
+          "type": "jsonb",
           "primaryKey": false,
           "notNull": false
         }

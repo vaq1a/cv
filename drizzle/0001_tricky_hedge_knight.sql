@@ -1,1 +1,0 @@
-ALTER TABLE "resume" ALTER COLUMN "aboutMe" SET DATA TYPE jsonb;
