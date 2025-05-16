@@ -3,11 +3,11 @@
     "home": {
       "meta": {
         "title": "CV | Vadim Sirisko",
-        "description": "page description",
-        "keywords": "page keywords",
+        "description": "I am a Front-end developer with over 5 years of experience. I have experience in creating attractive and user-friendly web interfaces. I skilled how to create responsive design with a good level of optimization. I can collaborate effectively with a team.",
+        "keywords": "Front-end developer, JavaScript, TypeScript, Vue.js, Nuxt.js, React, Next.js, HTML, CSS, SASS, Rest API, GraphQL, Git, Web development",
         "og": {
-          "title": "og title",
-          "description": "og description"
+          "title": "Vadim Sirisko | Front-End Developer",
+          "description": "I am a Front-end developer with over 5 years of experience. I have experience in creating attractive and user-friendly web interfaces. I skilled how to create responsive design with a good level of optimization. I can collaborate effectively with a team."
         }
       }
     }
