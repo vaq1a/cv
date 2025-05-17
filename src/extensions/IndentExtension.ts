@@ -37,10 +37,12 @@ export const Indent = Extension.create<IndentOptions>({
         types: this.options.types,
         attributes: {
           indent: {
-            renderHTML: (attributes) =>
-              attributes?.indent > this.options.minLevel
-                ? { "data-indent": attributes.indent }
-                : null,
+            renderHTML: (attributes: { indent?: number }) => {
+              const indentValue = attributes?.indent ?? 0;
+              return indentValue > this.options.minLevel
+                ? { "data-indent": indentValue }
+                : null;
+            },
             parseHTML: (element) => {
               const level = Number(element.getAttribute("data-indent"));
               return level && level > this.options.minLevel ? level : null;
@@ -60,7 +62,15 @@ export const Indent = Extension.create<IndentOptions>({
       const node = tr.doc.nodeAt(pos);
       if (!node) return tr;
 
-      const nextLevel = (node.attrs.indent || 0) + delta;
+      const indentLevel =
+        (
+          node.attrs as {
+            indent?: number;
+          }
+        )?.indent ?? 0;
+
+      const nextLevel = indentLevel + delta;
+
       const { minLevel, maxLevel } = this.options;
       const indent = Math.min(Math.max(nextLevel, minLevel), maxLevel);
 
