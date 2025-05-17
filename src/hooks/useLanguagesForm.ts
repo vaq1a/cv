@@ -13,6 +13,7 @@ import {
   SAVE_DATA_SUCCESS_MESSAGE,
 } from "@/constant/notifications";
 import Link from "@tiptap/extension-link";
+import { Indent } from "@/extensions/IndentExtension";
 
 export const useLanguagesForm = () => {
   const { toast } = useToast();
@@ -52,6 +53,11 @@ export const useLanguagesForm = () => {
       IconExtension,
       Link.configure({
         protocols: ["tel", "mailto"],
+      }),
+      Indent.configure({
+        types: ["listItem", "paragraph", "heading"],
+        minLevel: 0,
+        maxLevel: 8,
       }),
     ],
     onUpdate: ({ editor }) => {

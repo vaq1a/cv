@@ -9,10 +9,12 @@ import StarterKit from "@tiptap/starter-kit";
 import Underline from "@tiptap/extension-underline";
 import { IconExtension } from "@/extensions/IconExtension";
 import Link from "@tiptap/extension-link";
+
 import {
   FILL_FIELD_WARNING,
   SAVE_DATA_SUCCESS_MESSAGE,
 } from "@/constant/notifications";
+import { Indent } from "@/extensions/IndentExtension";
 
 export const useContactsForms = () => {
   const { toast } = useToast();
@@ -52,6 +54,11 @@ export const useContactsForms = () => {
       IconExtension,
       Link.configure({
         protocols: ["tel", "mailto"],
+      }),
+      Indent.configure({
+        types: ["listItem", "paragraph", "heading"],
+        minLevel: 0,
+        maxLevel: 8,
       }),
     ],
     onUpdate: ({ editor }) => {

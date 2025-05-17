@@ -86,4 +86,13 @@
     min-width: 2rem;
     color: $color-secondary;
   }
+
+  li, h1, h2, h3, h4, h5, h6, p {
+    @for $i from 1 through 8 {
+      &[data-indent='#{$i}'] {
+        $val: $i * 1rem;
+        margin-bottom: $val;
+      }
+    }
+  }
 }
