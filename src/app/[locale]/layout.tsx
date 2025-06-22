@@ -29,8 +29,10 @@ export async function generateMetadata({
     description: t("description"),
     keywords: t("keywords"),
     openGraph: {
+      images: ["/profile.png"],
       title: t("og.title"),
       description: t("og.description"),
+      locale: locale,
     },
     icons: {
       icon: [
@@ -38,11 +40,9 @@ export async function generateMetadata({
         { url: "/favicon-96x96.png", sizes: "96x96", type: "image/png" },
         { url: "/favicon.ico" },
       ],
-      apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
-    },
-    manifest: "/site.webmanifest",
-    appleWebApp: {
-      title: t("title"),
+      apple: [
+        { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+      ],
     },
   };
 }
