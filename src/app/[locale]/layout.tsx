@@ -29,7 +29,6 @@ export async function generateMetadata({
     description: t("description"),
     keywords: t("keywords"),
     openGraph: {
-      images: ["/profile.png"],
       title: t("og.title"),
       description: t("og.description"),
       locale: locale,

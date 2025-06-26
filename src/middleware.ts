@@ -50,6 +50,6 @@ export const config = {
   matcher: [
     "/admin/:path*",
     "/auth/:path*",
-    "/((?!api|_next/static|_next/image|_next/font|sprite.svg|favicon.ico|manifest.json|site.webmanifest).*)",
+    "/((?!api|_next/static|_next/image|_next/font|sprite.svg|robots.txt|sitemap.xml|favicon.ico|manifest.json|manifest.webmanifest).*)",
   ],
 };

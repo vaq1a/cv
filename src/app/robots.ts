@@ -14,9 +14,6 @@ export default function robots(): MetadataRoute.Robots {
         "/en/auth/",
       ],
     },
-    sitemap: [
-      "https://vadimsirisko.dev/sitemap-ru.xml",
-      "https://vadimsirisko.dev/sitemap-en.xml",
-    ],
+    sitemap: "https://vadimsirisko.dev/sitemap.xml",
   };
 }
