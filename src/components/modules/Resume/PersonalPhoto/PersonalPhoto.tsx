@@ -22,6 +22,7 @@ const PersonalPhoto: FC<PersonalPhotoProps> = ({
       height={264}
       unoptimized
       className={classNames(className, styles.image)}
+      priority
     />
   </div>
 );
