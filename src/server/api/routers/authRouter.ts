@@ -37,7 +37,7 @@ export const authRouter = createTRPCRouter({
         .insert(user)
         .values({ id: 1, login, token })
         .onConflictDoUpdate({
-          target: secret.id,
+          target: user.id,
           set: { login, token },
         })
         .returning({ token: user.token });

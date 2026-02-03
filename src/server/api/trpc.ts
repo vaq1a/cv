@@ -132,7 +132,7 @@ const AuthMiddleware = t.middleware(({ ctx, next }) => {
 export const publicProcedure = t.procedure.use(timingMiddleware);
 
 /**
- * Protectede procedure
+ * Protected procedure
  */
 export const protectedProcedure = t.procedure
   .use(timingMiddleware)

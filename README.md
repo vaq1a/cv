@@ -1,29 +1,85 @@
-# Create T3 App
+# CV
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+Веб-приложение для резюме: публичная страница с мультиязычным контентом (EN/RU) и админ-панель для редактирования блоков резюме, контактов, образования, опыта и загрузки фото.
 
-## What's next? How do I make an app with this?
+## Стек
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+- **Next.js 14** — React-фреймворк
+- **tRPC** — типобезопасный API
+- **Drizzle ORM** — работа с PostgreSQL
+- **next-intl** — интернационализация (EN/RU)
+- **TipTap** — редактор контента
+- **Tailwind CSS**, **Sass** — стили
+- **React Hook Form**, **Zod** — формы и валидация
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+## Требования
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Drizzle](https://orm.drizzle.team)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+- Node.js 18+
+- PostgreSQL
+- Yarn
 
-## Learn More
+## Установка
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+1. Клонировать репозиторий и перейти в каталог проекта:
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+   ```bash
+   git clone <repo-url>
+   cd cv
+   ```
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+2. Установить зависимости:
 
-## How do I deploy this?
+   ```bash
+   yarn
+   ```
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+3. Создать файл окружения:
+
+   ```bash
+   cp .env.example .env
+   ```
+
+   Заполнить переменные в `.env` (см. раздел «Переменные окружения»).
+
+4. Применить схему БД:
+
+   ```bash
+   yarn db:push
+   ```
+
+   Либо сгенерировать и применить миграции:
+
+   ```bash
+   yarn db:generate
+   yarn db:migrate
+   ```
+
+5. Запустить в режиме разработки:
+
+   ```bash
+   yarn dev
+   ```
+
+   Приложение будет доступно по адресу [http://localhost:3000](http://localhost:3000).
+
+## Скрипты
+
+| Команда            | Описание                                            |
+| ------------------ | --------------------------------------------------- |
+| `yarn dev`         | Запуск в режиме разработки                          |
+| `yarn build`       | Сборка для production                               |
+| `yarn start`       | Запуск собранного приложения                        |
+| `yarn lint`        | Проверка линтером                                   |
+| `yarn db:push`     | Применение схемы к БД без миграций                  |
+| `yarn db:generate` | Генерация миграций Drizzle                          |
+| `yarn db:migrate`  | Применение миграций                                 |
+| `yarn db:studio`   | Запуск Drizzle Studio для просмотра и правки данных |
+
+## Структура
+
+- `src/app/[locale]/` — страницы (главная, админка, авторизация) с учётом локали
+- `src/components/` — UI-компоненты, формы, блоки резюме
+- `src/server/api/routers/` — tRPC-роутеры (resume, auth, email, upload)
+- `src/server/db/` — Drizzle-схема и подключение к БД
+- `src/hooks/` — хуки для форм и данных резюме
+- `src/messages/` — переводы (en.json, ru.json)
