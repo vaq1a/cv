@@ -1,10 +1,12 @@
 import { resume } from "@/server/db/schema";
+import { eq } from "drizzle-orm";
 import { z } from "zod";
 import {
   createTRPCRouter,
   protectedProcedure,
   publicProcedure,
 } from "@/server/api/trpc";
+import { env } from "@/env";
 
 export const resumeRouter = createTRPCRouter({
   setPersonalInfo: protectedProcedure
@@ -24,7 +26,7 @@ export const resumeRouter = createTRPCRouter({
       const result = await ctx.db
         .insert(resume)
         .values({
-          id: 1,
+          id: env.ENTITY_ID,
           personalInfo,
         })
         .onConflictDoUpdate({
@@ -54,7 +56,7 @@ export const resumeRouter = createTRPCRouter({
       const result = await ctx.db
         .insert(resume)
         .values({
-          id: 1,
+          id: env.ENTITY_ID,
           aboutMe,
         })
         .onConflictDoUpdate({
@@ -84,7 +86,7 @@ export const resumeRouter = createTRPCRouter({
       const result = await ctx.db
         .insert(resume)
         .values({
-          id: 1,
+          id: env.ENTITY_ID,
           contacts,
         })
         .onConflictDoUpdate({
@@ -114,7 +116,7 @@ export const resumeRouter = createTRPCRouter({
       const result = await ctx.db
         .insert(resume)
         .values({
-          id: 1,
+          id: env.ENTITY_ID,
           skills,
         })
         .onConflictDoUpdate({
@@ -144,7 +146,7 @@ export const resumeRouter = createTRPCRouter({
       const result = await ctx.db
         .insert(resume)
         .values({
-          id: 1,
+          id: env.ENTITY_ID,
           educations,
         })
         .onConflictDoUpdate({
@@ -174,7 +176,7 @@ export const resumeRouter = createTRPCRouter({
       const result = await ctx.db
         .insert(resume)
         .values({
-          id: 1,
+          id: env.ENTITY_ID,
           languages,
         })
         .onConflictDoUpdate({
@@ -204,7 +206,7 @@ export const resumeRouter = createTRPCRouter({
       const result = await ctx.db
         .insert(resume)
         .values({
-          id: 1,
+          id: env.ENTITY_ID,
           experience,
         })
         .onConflictDoUpdate({
@@ -218,7 +220,10 @@ export const resumeRouter = createTRPCRouter({
       return result[0];
     }),
   getAllData: publicProcedure.query(async ({ ctx }) => {
-    const data = await ctx.db.select().from(resume);
+    const data = await ctx.db
+      .select()
+      .from(resume)
+      .where(eq(resume.id, env.ENTITY_ID));
 
     return data;
   }),

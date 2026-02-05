@@ -24,6 +24,7 @@ export const env = createEnv({
     CLOUDFLARE_SECRET_KEY: z.string(),
     CLOUDFLARE_BUCKET_NAME: z.string(),
     CLOUDFLARE_PUBLIC_URL: z.string(),
+    ENTITY_ID: z.coerce.number().default(1),
   },
 
   /**
@@ -56,6 +57,7 @@ export const env = createEnv({
     CLOUDFLARE_SECRET_KEY: process.env.CLOUDFLARE_SECRET_KEY,
     CLOUDFLARE_BUCKET_NAME: process.env.CLOUDFLARE_BUCKET_NAME,
     CLOUDFLARE_PUBLIC_URL: process.env.CLOUDFLARE_PUBLIC_URL,
+    ENTITY_ID: process.env.ENTITY_ID,
   },
   /**
    * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially

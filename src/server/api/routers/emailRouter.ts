@@ -11,7 +11,7 @@ export const emailRouter = createTRPCRouter({
 
     const secretData: Array<{ id: number; secret: string }> = await ctx.db
       .insert(secret)
-      .values({ id: 1, secret: secretKey })
+      .values({ id: env.ENTITY_ID, secret: secretKey })
       .onConflictDoUpdate({
         target: secret.id,
         set: { secret: secretKey },

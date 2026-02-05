@@ -43,7 +43,7 @@ export const uploadRouter = createTRPCRouter({
         const result = await ctx.db
           .insert(resume)
           .values({
-            id: 1,
+            id: env.ENTITY_ID,
             personalPhoto: `${env.CLOUDFLARE_PUBLIC_URL}/${key}`,
           })
           .onConflictDoUpdate({

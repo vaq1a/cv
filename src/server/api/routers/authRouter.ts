@@ -22,7 +22,7 @@ export const authRouter = createTRPCRouter({
       const currentSecret = await ctx.db
         .select()
         .from(secret)
-        .where(and(eq(secret.id, 1), eq(secret.secret, password)));
+        .where(and(eq(secret.id, env.ENTITY_ID), eq(secret.secret, password)));
 
       if (!currentSecret?.length) {
         throw new TRPCError({
@@ -35,7 +35,7 @@ export const authRouter = createTRPCRouter({
 
       const currentUser = await ctx.db
         .insert(user)
-        .values({ id: 1, login, token })
+        .values({ id: env.ENTITY_ID, login, token })
         .onConflictDoUpdate({
           target: user.id,
           set: { login, token },
