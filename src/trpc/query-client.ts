@@ -5,6 +5,8 @@ import {
 } from "@tanstack/react-query";
 import SuperJSON from "superjson";
 
+import { logger } from "@/lib/logger";
+
 export const createQueryClient = () =>
   new QueryClient({
     defaultOptions: {
@@ -24,11 +26,11 @@ export const createQueryClient = () =>
       },
     },
     mutationCache: new MutationCache({
-      onError: (error, variables, context, mutation) => {
-        console.log(`Global mutation error:`, {
+      onError: (error, _variables, _context, mutation) => {
+        // debug, чтобы не дублировать лог из onError конкретной мутации (например "Login failed")
+        logger.debug("Mutation error", {
           error,
-          variables,
-          mutation: mutation.options.mutationKey,
+          mutationKey: mutation.options.mutationKey,
         });
       },
     }),

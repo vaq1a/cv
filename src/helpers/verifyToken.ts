@@ -1,5 +1,7 @@
 import * as jose from "jose";
 
+import { logger } from "@/lib/logger";
+
 export const verifyToken = async (tokenValue: string | undefined) => {
   if (!tokenValue) return false;
 
@@ -9,9 +11,9 @@ export const verifyToken = async (tokenValue: string | undefined) => {
     return !!payload;
   } catch (error) {
     if (error instanceof jose.errors.JWSInvalid) {
-      console.error("Invalid JWT format:", error);
+      logger.error("Invalid JWT format", error);
     } else {
-      console.error("Token verification failed:", error);
+      logger.error("Token verification failed", error);
     }
     return false;
   }

@@ -10,6 +10,7 @@ import { initTRPC, TRPCError } from "@trpc/server";
 import superjson from "superjson";
 import { ZodError } from "zod";
 
+import { logger } from "@/lib/logger";
 import { db } from "@/server/db";
 import { verifyToken } from "@/server/utils/jwt";
 import { type NextRequest } from "next/server";
@@ -98,7 +99,7 @@ const timingMiddleware = t.middleware(async ({ next, path }) => {
   const result = await next();
 
   const end = Date.now();
-  console.log(`[TRPC] ${path} took ${end - start}ms to execute`);
+  logger.info(`tRPC ${path} took ${end - start}ms`);
 
   return result;
 });

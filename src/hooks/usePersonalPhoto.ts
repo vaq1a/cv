@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { api } from "@/trpc/react";
 import { FILE_FIELD_ERROR } from "@/constant/notifications";
 import { useResume } from "@/hooks/useResume";
+import { logger } from "@/lib/logger";
 
 export const usePersonalPhoto = () => {
   const { toast } = useToast();
@@ -20,8 +21,7 @@ export const usePersonalPhoto = () => {
     const file = event.target.files?.[0];
 
     if (!file || file.size === 0) {
-      console.error("File is empty or not selected");
-
+      logger.warn("File is empty or not selected");
       return;
     }
 
@@ -51,7 +51,7 @@ export const usePersonalPhoto = () => {
         setUploadedUrl(result.url);
       };
     } catch (error) {
-      console.error("Error uploading file:", error);
+      logger.error("Error uploading file", error);
     } finally {
       setIsUploading(false);
     }

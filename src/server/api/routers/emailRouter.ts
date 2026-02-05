@@ -2,6 +2,7 @@ import { createTRPCRouter, publicProcedure } from "../trpc";
 import { nanoid } from "nanoid";
 import nodemailer from "nodemailer";
 import { env } from "@/env";
+import { logger } from "@/lib/logger";
 import { secret } from "@/server/db/schema";
 
 export const emailRouter = createTRPCRouter({
@@ -42,7 +43,7 @@ export const emailRouter = createTRPCRouter({
 
       return { success: true, message: "Password sent successfully" };
     } catch (error) {
-      console.error("Failed to send email:", error);
+      logger.error("Failed to send email", error);
       throw new Error("Failed to send password");
     }
   }),

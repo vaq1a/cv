@@ -2,8 +2,11 @@ import { z } from "zod";
 import { PutObjectCommand } from "@aws-sdk/client-s3";
 import { createTRPCRouter, protectedProcedure } from "@/server/api/trpc";
 import { env } from "@/env";
+import { logger } from "@/lib/logger";
 import { r2Client } from "@/server/utils/r2";
 import { resume } from "@/server/db/schema";
+
+const log = logger;
 
 export const uploadRouter = createTRPCRouter({
   getPresignedUrl: protectedProcedure
@@ -61,10 +64,11 @@ export const uploadRouter = createTRPCRouter({
         };
       } catch (error) {
         if (error instanceof Error) {
-          console.error("Error uploading file:", error.message);
+          log.error("Error uploading file", error.message);
         } else {
-          console.error("Unknown error:", error);
+          log.error("Unknown error", error);
         }
+        throw error;
       }
     }),
 });

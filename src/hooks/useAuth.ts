@@ -4,6 +4,7 @@ import { api } from "@/trpc/react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useToast } from "@/hooks/use-toast";
+import { logger } from "@/lib/logger";
 
 const formSchema = z.object({
   login: z.string().min(5, {
@@ -35,7 +36,7 @@ export const useAuth = () => {
       }
     },
     onError: (error) => {
-      console.log(error);
+      logger.error("Login failed", error);
       toast({
         description: `${error.message}`,
       });
@@ -54,11 +55,11 @@ export const useAuth = () => {
   };
 
   const sendPasswordMutation = api.email.sendPassword.useMutation({
-    onSuccess: (data) => {
-      console.log("Send Password successful", data);
+    onSuccess: () => {
+      logger.info("Send password successful");
     },
     onError: (error) => {
-      console.error("Send Password failed", error);
+      logger.error("Send password failed", error);
     },
   });
 
