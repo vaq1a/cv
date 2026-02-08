@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import createMiddleware from "next-intl/middleware";
-import { verifyToken } from "@/helpers/verifyToken";
+import { verifyToken } from "@/lib/jwt";
 
 const locales = ["en", "ru"];
 const defaultLocale = "en";
@@ -29,7 +29,10 @@ export async function middleware(request: NextRequest) {
     ? pathname.substring(3)
     : pathname;
 
-  const isAuth = await verifyToken(tokenValue);
+  const isAuth = !!(await verifyToken(
+    tokenValue,
+    process.env.JWT_SECRET ?? "",
+  ));
 
   if (pathWithoutLocale.startsWith("/admin") && !isAuth) {
     const locale = pathnameHasLocale ? pathname.split("/")[1] : defaultLocale;

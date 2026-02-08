@@ -31,7 +31,7 @@ export const authRouter = createTRPCRouter({
         });
       }
 
-      const token = generateToken(login);
+      const token = await generateToken(login);
 
       const currentUser = await ctx.db
         .insert(user)

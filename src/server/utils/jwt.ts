@@ -1,16 +1,18 @@
-import jwt from "jsonwebtoken";
 import { env } from "@/env";
+import * as jwt from "@/lib/jwt";
 
-const JWT_SECRET = env.JWT_SECRET;
+/**
+ * Generates a JWT for the given user (server-only, uses env.JWT_SECRET).
+ */
+export async function generateToken(userName: string): Promise<string> {
+  return jwt.signToken(userName, env.JWT_SECRET);
+}
 
-export const generateToken = (userName: string): string => {
-  return jwt.sign({ userName }, JWT_SECRET, { expiresIn: "15min" });
-};
-
-export const verifyToken = (token: string): { userName: string } | null => {
-  try {
-    return jwt.verify(token, JWT_SECRET) as { userName: string };
-  } catch (error) {
-    return null;
-  }
-};
+/**
+ * Verifies a JWT and returns the payload or null (server-only, uses env.JWT_SECRET).
+ */
+export async function verifyToken(
+  token: string | undefined,
+): Promise<jwt.JwtPayload | null> {
+  return jwt.verifyToken(token, env.JWT_SECRET);
+}

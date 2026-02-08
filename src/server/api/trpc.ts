@@ -105,20 +105,21 @@ const timingMiddleware = t.middleware(async ({ next, path }) => {
 });
 
 // Middleware for check auth token
-const AuthMiddleware = t.middleware(({ ctx, next }) => {
+const AuthMiddleware = t.middleware(async ({ ctx, next }) => {
   if (!ctx.token) {
     throw new TRPCError({ code: "UNAUTHORIZED" });
   }
 
-  const verifyTokenResult = verifyToken(ctx.token);
+  const payload = await verifyToken(ctx.token);
 
-  if (!verifyTokenResult) {
+  if (!payload) {
     throw new TRPCError({ code: "UNAUTHORIZED" });
   }
 
   return next({
     ctx: {
       token: ctx.token,
+      user: payload,
     },
   });
 });
