@@ -17,6 +17,7 @@ const ContactsForm: FC<ContactsFormProps> = ({ className }) => {
   const {
     isMounted,
     isLoading,
+    isPending,
     editor,
     currentLang,
     handleSetContacts,
@@ -35,6 +36,7 @@ const ContactsForm: FC<ContactsFormProps> = ({ className }) => {
         editor={editor}
         currentLang={currentLang}
         saveHandler={handleSetContacts}
+        isSavePending={isPending}
         toggleLanguage={toggleLanguage}
       />
     </div>

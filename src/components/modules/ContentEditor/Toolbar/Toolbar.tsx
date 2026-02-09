@@ -12,6 +12,7 @@ type Props = {
   editor: Editor | null;
   className?: string;
   saveHandler: () => void;
+  isSavePending?: boolean;
   toggleLanguage: () => void;
   currentLang: string;
 };
@@ -20,6 +21,7 @@ const Toolbar = ({
   editor,
   className,
   saveHandler,
+  isSavePending = false,
   currentLang,
   toggleLanguage,
 }: Props) => {
@@ -147,9 +149,11 @@ const Toolbar = ({
         <div className={styles.toolbar__column}>
           <div className={styles.toolbar__cell}>
             <button
+              type="button"
               onClick={saveHandler}
               title="Save"
               className={styles.button}
+              disabled={isSavePending}
             >
               <UiIcon name="save" />
             </button>

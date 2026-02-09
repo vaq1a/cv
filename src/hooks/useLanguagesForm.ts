@@ -106,6 +106,7 @@ export const useLanguagesForm = () => {
   return {
     isMounted,
     isLoading,
+    isPending,
     editor,
     currentLang,
     handleSetLanguages,

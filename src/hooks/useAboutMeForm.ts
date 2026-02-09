@@ -106,6 +106,7 @@ export const useAboutMeForm = () => {
   return {
     isMounted,
     isLoading,
+    isPending,
     editor,
     currentLang,
     handleSetAboutMe,

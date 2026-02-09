@@ -17,6 +17,7 @@ const ExperienceForm: FC<ExperienceFormProps> = ({ className }) => {
   const {
     isMounted,
     isLoading,
+    isPending,
     editor,
     currentLang,
     handleSetExperience,
@@ -35,6 +36,7 @@ const ExperienceForm: FC<ExperienceFormProps> = ({ className }) => {
         editor={editor}
         currentLang={currentLang}
         saveHandler={handleSetExperience}
+        isSavePending={isPending}
         toggleLanguage={toggleLanguage}
       />
     </div>

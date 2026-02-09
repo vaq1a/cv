@@ -17,6 +17,7 @@ const AboutMeForm: FC<AboutMeFormProps> = ({ className }) => {
   const {
     isMounted,
     isLoading,
+    isPending,
     editor,
     currentLang,
     handleSetAboutMe,
@@ -35,6 +36,7 @@ const AboutMeForm: FC<AboutMeFormProps> = ({ className }) => {
         editor={editor}
         currentLang={currentLang}
         saveHandler={handleSetAboutMe}
+        isSavePending={isPending}
         toggleLanguage={toggleLanguage}
       />
     </div>

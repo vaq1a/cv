@@ -17,6 +17,7 @@ const PersonalInfoForm: FC<PersonalInfoFormProps> = ({ className }) => {
   const {
     isMounted,
     isLoading,
+    isPending,
     editor,
     currentLang,
     handleSetPersonalInfo,
@@ -35,6 +36,7 @@ const PersonalInfoForm: FC<PersonalInfoFormProps> = ({ className }) => {
         editor={editor}
         currentLang={currentLang}
         saveHandler={handleSetPersonalInfo}
+        isSavePending={isPending}
         toggleLanguage={toggleLanguage}
       />
     </div>

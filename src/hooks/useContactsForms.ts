@@ -107,6 +107,7 @@ export const useContactsForms = () => {
   return {
     isMounted,
     isLoading,
+    isPending,
     editor,
     currentLang,
     handleSetContacts,

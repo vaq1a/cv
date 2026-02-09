@@ -17,6 +17,7 @@ const SkillsForm: FC<SkillsFormProps> = ({ className }) => {
   const {
     isMounted,
     isLoading,
+    isPending,
     editor,
     currentLang,
     handleSetSkills,
@@ -35,6 +36,7 @@ const SkillsForm: FC<SkillsFormProps> = ({ className }) => {
         editor={editor}
         currentLang={currentLang}
         saveHandler={handleSetSkills}
+        isSavePending={isPending}
         toggleLanguage={toggleLanguage}
       />
     </div>

@@ -106,6 +106,7 @@ export const useSkillsForm = () => {
   return {
     isMounted,
     isLoading,
+    isPending,
     editor,
     currentLang,
     handleSetSkills,

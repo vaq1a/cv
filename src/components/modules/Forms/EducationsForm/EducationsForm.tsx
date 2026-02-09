@@ -17,6 +17,7 @@ const EducationsForm: FC<EducationsFormProps> = ({ className }) => {
   const {
     isMounted,
     isLoading,
+    isPending,
     editor,
     currentLang,
     handleSetEducations,
@@ -35,6 +36,7 @@ const EducationsForm: FC<EducationsFormProps> = ({ className }) => {
         editor={editor}
         currentLang={currentLang}
         saveHandler={handleSetEducations}
+        isSavePending={isPending}
         toggleLanguage={toggleLanguage}
       />
     </div>

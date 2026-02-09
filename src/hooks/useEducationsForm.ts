@@ -111,6 +111,7 @@ export const useEducationsForm = () => {
   return {
     isMounted,
     isLoading,
+    isPending,
     editor,
     currentLang,
     handleSetEducations,

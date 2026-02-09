@@ -111,6 +111,7 @@ export const useExperienceForm = () => {
   return {
     isMounted,
     isLoading,
+    isPending,
     editor,
     currentLang,
     handleSetExperience,

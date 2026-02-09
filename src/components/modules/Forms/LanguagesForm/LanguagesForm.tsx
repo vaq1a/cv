@@ -17,6 +17,7 @@ const LanguagesForm: FC<LanguagesFormProps> = ({ className }) => {
   const {
     isMounted,
     isLoading,
+    isPending,
     editor,
     currentLang,
     handleSetLanguages,
@@ -35,6 +36,7 @@ const LanguagesForm: FC<LanguagesFormProps> = ({ className }) => {
         editor={editor}
         currentLang={currentLang}
         saveHandler={handleSetLanguages}
+        isSavePending={isPending}
         toggleLanguage={toggleLanguage}
       />
     </div>

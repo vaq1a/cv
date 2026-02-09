@@ -112,6 +112,7 @@ export const usePersonalInfoForm = () => {
   return {
     isMounted,
     isLoading,
+    isPending,
     editor,
     currentLang,
     handleSetPersonalInfo,
