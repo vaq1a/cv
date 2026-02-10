@@ -1,5 +1,6 @@
 import { env } from "@/env";
 import * as jwt from "@/lib/jwt";
+import type { JwtPayload } from "@/types/auth";
 
 /**
  * Generates a JWT for the given user (server-only, uses env.JWT_SECRET).
@@ -13,6 +14,6 @@ export async function generateToken(userName: string): Promise<string> {
  */
 export async function verifyToken(
   token: string | undefined,
-): Promise<jwt.JwtPayload | null> {
+): Promise<JwtPayload | null> {
   return jwt.verifyToken(token, env.JWT_SECRET);
 }
