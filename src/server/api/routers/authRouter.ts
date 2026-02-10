@@ -56,6 +56,6 @@ export const authRouter = createTRPCRouter({
         `token=${tokenFromDB}; HttpOnly; Secure; SameSite=Strict; Max-Age=180; Path=/`,
       );
 
-      return { token: tokenFromDB };
+      return { success: true };
     }),
 });

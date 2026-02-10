@@ -5,6 +5,7 @@ import { env } from "@/env";
 import { logger } from "@/lib/logger";
 import { r2Client } from "@/server/utils/r2";
 import { resume } from "@/server/db/schema";
+import { allowedImageFileTypeSchema } from "@/types/upload";
 
 const log = logger;
 
@@ -13,7 +14,7 @@ export const uploadRouter = createTRPCRouter({
     .input(
       z.object({
         fileName: z.string(),
-        fileType: z.string(),
+        fileType: allowedImageFileTypeSchema,
         fileContent: z.string(),
       }),
     )

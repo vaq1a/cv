@@ -29,10 +29,8 @@ export const useAuth = () => {
 
   const loginMutation = api.auth.login.useMutation({
     onSuccess: (data) => {
-      if (data?.token) {
+      if (data?.success) {
         router.push("/admin");
-
-        return;
       }
     },
     onError: (error) => {
