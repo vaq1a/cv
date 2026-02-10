@@ -3,7 +3,6 @@ import { z } from "zod";
 export type ResumeItem = { lang: "ru" | "en"; content: string };
 export type ResumeItems = ResumeItem[];
 
-/** Полная запись резюме (ответ API / строка БД) */
 export type ResumeData = {
   id: number;
   personalPhoto: string | null;

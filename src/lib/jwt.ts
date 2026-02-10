@@ -6,8 +6,6 @@
 import type { JwtPayload } from "@/types/auth";
 import * as jose from "jose";
 
-export type { JwtPayload } from "@/types/auth";
-
 const ALG = "HS256";
 const EXPIRES_IN = "15m";
 
