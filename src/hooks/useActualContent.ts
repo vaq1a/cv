@@ -1,14 +1,8 @@
+import type { ResumeItems } from "@/types/resume";
 import { useLocale } from "next-intl";
 import { useMemo } from "react";
 
-type LocalizedContent = {
-  lang: "ru" | "en";
-  content: string;
-};
-
-export const useActualContent = (
-  content: LocalizedContent[] | undefined | null,
-) => {
+export const useActualContent = (content: ResumeItems | undefined | null) => {
   const currentLocale = useLocale();
 
   const actualContent = useMemo(() => {

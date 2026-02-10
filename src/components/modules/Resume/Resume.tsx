@@ -7,22 +7,12 @@ import Education from "@/components/modules/Resume/Education/Education";
 import Languages from "@/components/modules/Resume/Languages/Languages";
 import Experience from "@/components/modules/Resume/Experience/Experience";
 import PersonalPhoto from "@/components/modules/Resume/PersonalPhoto/PersonalPhoto";
-import { type ResumeItems } from "@/types/resume";
+import { type ResumeData } from "@/types/resume";
 
 import styles from "./Resume.module.scss";
 
 interface ResumeProps {
-  resume: {
-    personalPhoto: string | null;
-    personalInfo: ResumeItems | null;
-    contacts: ResumeItems | null;
-    aboutMe: ResumeItems | null;
-    experience: ResumeItems | null;
-    skills: ResumeItems | null;
-    educations: ResumeItems | null;
-    languages: ResumeItems | null;
-    id: number;
-  };
+  resume: ResumeData;
 }
 
 export const Resume: FC<ResumeProps> = ({ resume }) => {

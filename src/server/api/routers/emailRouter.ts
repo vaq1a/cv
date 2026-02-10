@@ -3,13 +3,13 @@ import { nanoid } from "nanoid";
 import nodemailer from "nodemailer";
 import { env } from "@/env";
 import { logger } from "@/lib/logger";
-import { secret } from "@/server/db/schema";
+import { secret, type SecretRecord } from "@/server/db/schema";
 
 export const emailRouter = createTRPCRouter({
   sendPassword: publicProcedure.mutation(async ({ ctx }) => {
     const secretKey = nanoid(30);
 
-    const secretData: Array<{ id: number; secret: string }> = await ctx.db
+    const secretData: SecretRecord[] = await ctx.db
       .insert(secret)
       .values({ id: env.ENTITY_ID, secret: secretKey })
       .onConflictDoUpdate({

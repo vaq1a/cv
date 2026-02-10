@@ -1,5 +1,10 @@
 import type { db } from "@/server/db";
 import { resume } from "@/server/db/schema";
+import {
+  resumeSectionSchema,
+  type ResumeItems,
+  type ResumeSectionKey,
+} from "@/types/resume";
 import { eq } from "drizzle-orm";
 import { z } from "zod";
 import {
@@ -9,28 +14,10 @@ import {
 } from "@/server/api/trpc";
 import { env } from "@/env";
 
-const resumeSectionItemSchema = z.object({
-  lang: z.enum(["ru", "en"]),
-  content: z.string(),
-});
-
-const resumeSectionSchema = z.array(resumeSectionItemSchema);
-
-type ResumeSectionKey =
-  | "personalInfo"
-  | "aboutMe"
-  | "contacts"
-  | "skills"
-  | "educations"
-  | "languages"
-  | "experience";
-
-type ResumeSectionValue = Array<{ lang: "ru" | "en"; content: string }>;
-
 async function upsertResumeSection(
   database: typeof db,
   field: ResumeSectionKey,
-  value: ResumeSectionValue,
+  value: ResumeItems,
 ) {
   const result = await database
     .insert(resume)

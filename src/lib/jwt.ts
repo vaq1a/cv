@@ -3,12 +3,13 @@
  * Secret is passed in so this module does not depend on env and is safe for middleware.
  */
 
+import type { JwtPayload } from "@/types/auth";
 import * as jose from "jose";
+
+export type { JwtPayload } from "@/types/auth";
 
 const ALG = "HS256";
 const EXPIRES_IN = "15m";
-
-export type JwtPayload = { userName: string };
 
 function getSecret(secret: string): Uint8Array {
   return new TextEncoder().encode(secret);
