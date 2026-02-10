@@ -4,6 +4,7 @@ import { api } from "@/trpc/react";
 import { FILE_FIELD_ERROR } from "@/constant/notifications";
 import { useResume } from "@/hooks/useResume";
 import { logger } from "@/lib/logger";
+import { isAllowedImageFileType } from "@/types/upload";
 
 export const usePersonalPhoto = () => {
   const { toast } = useToast();
@@ -25,6 +26,15 @@ export const usePersonalPhoto = () => {
       return;
     }
 
+    if (!isAllowedImageFileType(file.type)) {
+      toast({
+        description: "Invalid file type. Use JPEG, PNG or WebP.",
+      });
+      return;
+    }
+
+    const fileType = file.type;
+
     try {
       setIsUploading(true);
 
@@ -36,7 +46,7 @@ export const usePersonalPhoto = () => {
 
         const result = await getPresignedUrl({
           fileName: file.name,
-          fileType: file.type,
+          fileType,
           fileContent: base64String,
         });
 
