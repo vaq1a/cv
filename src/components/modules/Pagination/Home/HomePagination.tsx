@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/breadcrumb";
 import { type FC } from "react";
 import Link from "next/link";
+import { ADMIN_PATH } from "@/constant/routes";
 
 interface HomePaginationProps {
   className?: string;
@@ -23,7 +24,7 @@ const HomePagination: FC<HomePaginationProps> = ({ className }) => {
         <BreadcrumbSeparator />
         <BreadcrumbItem>
           <BreadcrumbLink asChild>
-            <Link href="/admin">Admin</Link>
+            <Link href={ADMIN_PATH}>Admin</Link>
           </BreadcrumbLink>
         </BreadcrumbItem>
       </BreadcrumbList>

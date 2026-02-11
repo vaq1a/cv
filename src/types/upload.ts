@@ -1,11 +1,7 @@
 import { z } from "zod";
+import { ALLOWED_IMAGE_MIME_TYPES } from "@/constant/upload";
 
-export const ALLOWED_IMAGE_MIME_TYPES = [
-  "image/jpeg",
-  "image/jpg",
-  "image/png",
-  "image/webp",
-] as const;
+export { ALLOWED_IMAGE_MIME_TYPES } from "@/constant/upload";
 
 export const allowedImageFileTypeSchema = z.enum(ALLOWED_IMAGE_MIME_TYPES);
 

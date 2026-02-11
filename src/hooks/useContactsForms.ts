@@ -15,6 +15,11 @@ import {
   SAVE_DATA_SUCCESS_MESSAGE,
 } from "@/constant/notifications";
 import { Indent } from "@/extensions/IndentExtension";
+import {
+  INDENT_MIN_LEVEL,
+  INDENT_MAX_LEVEL,
+  INDENT_TYPES,
+} from "@/constant/editor";
 
 export const useContactsForms = () => {
   const { toast } = useToast();
@@ -56,9 +61,9 @@ export const useContactsForms = () => {
         protocols: ["tel", "mailto"],
       }),
       Indent.configure({
-        types: ["listItem", "paragraph", "heading"],
-        minLevel: 0,
-        maxLevel: 8,
+        types: [...INDENT_TYPES],
+        minLevel: INDENT_MIN_LEVEL,
+        maxLevel: INDENT_MAX_LEVEL,
       }),
     ],
     onUpdate: ({ editor }) => {

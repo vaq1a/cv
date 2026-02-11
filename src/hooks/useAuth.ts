@@ -5,13 +5,20 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useToast } from "@/hooks/use-toast";
 import { logger } from "@/lib/logger";
+import {
+  MIN_LOGIN_LENGTH,
+  MIN_PASSWORD_LENGTH,
+  LOGIN_MIN_MESSAGE,
+  PASSWORD_MIN_MESSAGE,
+} from "@/constant/validation";
+import { ADMIN_PATH } from "@/constant/routes";
 
 const formSchema = z.object({
-  login: z.string().min(5, {
-    message: "Username must be at least 5 characters.",
+  login: z.string().min(MIN_LOGIN_LENGTH, {
+    message: LOGIN_MIN_MESSAGE,
   }),
-  password: z.string().min(10, {
-    message: "Password must be at least 10 characters.",
+  password: z.string().min(MIN_PASSWORD_LENGTH, {
+    message: PASSWORD_MIN_MESSAGE,
   }),
 });
 
@@ -30,7 +37,7 @@ export const useAuth = () => {
   const loginMutation = api.auth.login.useMutation({
     onSuccess: (data) => {
       if (data?.success) {
-        router.push("/admin");
+        router.push(ADMIN_PATH);
       }
     },
     onError: (error) => {

@@ -2,13 +2,16 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import createMiddleware from "next-intl/middleware";
 import { verifyToken } from "@/lib/jwt";
-
-const locales = ["en", "ru"];
-const defaultLocale = "en";
+import {
+  LOCALES,
+  DEFAULT_LOCALE,
+  ADMIN_PATH,
+  AUTH_PATH,
+} from "@/constant/routes";
 
 const localeMiddleware = createMiddleware({
-  locales,
-  defaultLocale,
+  locales: LOCALES,
+  defaultLocale: DEFAULT_LOCALE,
 });
 
 export async function middleware(request: NextRequest) {
@@ -16,12 +19,12 @@ export async function middleware(request: NextRequest) {
   const token = request.cookies.get("token");
   const tokenValue = token?.value;
 
-  const pathnameHasLocale = locales.some(
+  const pathnameHasLocale = LOCALES.some(
     (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`,
   );
 
   if (!pathnameHasLocale) {
-    request.nextUrl.pathname = `/${defaultLocale}${pathname}`;
+    request.nextUrl.pathname = `/${DEFAULT_LOCALE}${pathname}`;
     return NextResponse.redirect(request.nextUrl);
   }
 
@@ -34,16 +37,20 @@ export async function middleware(request: NextRequest) {
     process.env.JWT_SECRET ?? "",
   ));
 
-  if (pathWithoutLocale.startsWith("/admin") && !isAuth) {
-    const locale = pathnameHasLocale ? pathname.split("/")[1] : defaultLocale;
+  if (pathWithoutLocale.startsWith(ADMIN_PATH) && !isAuth) {
+    const locale = pathnameHasLocale ? pathname.split("/")[1] : DEFAULT_LOCALE;
 
-    return NextResponse.redirect(new URL(`/${locale}/auth`, request.url));
+    return NextResponse.redirect(
+      new URL(`/${locale}${AUTH_PATH}`, request.url),
+    );
   }
 
-  if (pathWithoutLocale.startsWith("/auth") && isAuth) {
-    const locale = pathnameHasLocale ? pathname.split("/")[1] : defaultLocale;
+  if (pathWithoutLocale.startsWith(AUTH_PATH) && isAuth) {
+    const locale = pathnameHasLocale ? pathname.split("/")[1] : DEFAULT_LOCALE;
 
-    return NextResponse.redirect(new URL(`/${locale}/admin`, request.url));
+    return NextResponse.redirect(
+      new URL(`/${locale}${ADMIN_PATH}`, request.url),
+    );
   }
 
   return localeMiddleware(request);

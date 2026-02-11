@@ -14,6 +14,11 @@ import {
 } from "@/constant/notifications";
 import Link from "@tiptap/extension-link";
 import { Indent } from "@/extensions/IndentExtension";
+import {
+  INDENT_MIN_LEVEL,
+  INDENT_MAX_LEVEL,
+  INDENT_TYPES,
+} from "@/constant/editor";
 
 export const useAboutMeForm = () => {
   const { toast } = useToast();
@@ -55,9 +60,9 @@ export const useAboutMeForm = () => {
         protocols: ["tel", "mailto"],
       }),
       Indent.configure({
-        types: ["listItem", "paragraph", "heading"],
-        minLevel: 0,
-        maxLevel: 8,
+        types: [...INDENT_TYPES],
+        minLevel: INDENT_MIN_LEVEL,
+        maxLevel: INDENT_MAX_LEVEL,
       }),
     ],
     onUpdate: ({ editor }) => {

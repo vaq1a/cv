@@ -4,6 +4,11 @@ import {
   TextSelection,
   type Transaction,
 } from "prosemirror-state";
+import {
+  INDENT_MIN_LEVEL,
+  INDENT_MAX_LEVEL,
+  INDENT_TYPES,
+} from "@/constant/editor";
 
 interface IndentOptions {
   types: string[];
@@ -25,9 +30,9 @@ export const Indent = Extension.create<IndentOptions>({
 
   addOptions() {
     return {
-      types: ["listItem", "paragraph", "heading"],
-      minLevel: 0,
-      maxLevel: 8,
+      types: [...INDENT_TYPES],
+      minLevel: INDENT_MIN_LEVEL,
+      maxLevel: INDENT_MAX_LEVEL,
     };
   },
 
